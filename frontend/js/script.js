@@ -1,3 +1,32 @@
+import { login } from "./signup.js";
+
+const loginButton = document.querySelector(".login__button");
+const loginError = document.querySelector(".login-error");
+
+loginButton.addEventListener('click', async (event) => {
+    event.preventDefault()
+    const email = document.querySelector(".login__email").value;
+    const password = document.querySelector(".login__password").value;
+    
+
+    const result = await login(email, password);
+
+    if (result.success) {
+            user.id = crypto.randomUUID();
+            user.name = loginName.value;
+            user.color = getRandomColor();
+        
+            loginSection.style.display = "none";
+            signup.style.display = "none";
+            chat.style.display = "flex";
+        
+            websocket = new WebSocket( "ws://localhost:8080");
+            websocket.onmessage = processMessage;      
+    } else {
+        loginError.textContent = "Erro: " + result.message;
+    }
+});
+
 // botões do HTML
 
 function toggleGallery() {
@@ -58,9 +87,11 @@ document.getElementById("primaryColorPicker").addEventListener("change", (e) => 
 applyCustomColors();
 
 // login elements
-const login = document.querySelector(".login");
-const loginForm = login.querySelector(".login__form");
-const loginInput = login.querySelector(".login__input");
+const loginSection = document.querySelector(".login");
+const loginForm = loginSection.querySelector(".login__form");
+const loginName = loginSection.querySelector(".login__name");
+
+const signup = document.querySelector(".signup");
 
 // chat elements
 const chat = document.querySelector(".chat");
@@ -383,20 +414,6 @@ const processMessage = ({ data }) => {
     scrollScreen();
 };
 
-const handleLogin = (event) => {
-    event.preventDefault();
-    user.id = crypto.randomUUID();
-    user.name = loginInput.value;
-    user.color = getRandomColor();
-
-    login.style.display = "none";
-    chat.style.display = "flex";
-
-    websocket = new WebSocket( "wss://chat-backend-h4xe.onrender.com");
-    websocket.onmessage = processMessage;
-    
-}
-
 const sendMessage = (event) => {
     event.preventDefault();
 
@@ -438,5 +455,4 @@ const sendMessage = (event) => {
     
 };
 
-loginForm.addEventListener("submit", handleLogin)
 chatForm.addEventListener("submit", sendMessage)

@@ -14,8 +14,21 @@
         <section class="login">
             <h2>Login</h2>
             <form class="login__form">
-                <input type="text" class="login__input" placeholder="Seu nome" required>
-                <button type="submit" class="login__button">Entrar</button>
+                <input type="text" class="login__name" placeholder="Seu nome" required>
+                <input type="email" class="login__email" placeholder="Seu e-mail" required>
+                <input type="password" class="login__password" placeholder="Sua senha" required>
+                <div class="login-error" class="error"></div>
+                <button type="submit" id="login-button" class="login__button">Logar</button>
+            </form>
+        </section>
+
+        <section class="signup">
+            <h2>Cadastro</h2>
+            <form class="signup__form">
+                <input type="email" class="signup__email" placeholder="Seu e-mail" required>
+                <input type="password" class="signup__password" placeholder="Sua senha" required>
+                <div class="signup-error" class="error"></div>
+                <button type="submit" class="signup__button">Cadastrar</button>
             </form>
         </section>
         
@@ -90,7 +103,7 @@
             </form>
         </section>
     </section>
-    <script src="./js/script.js"></script>
+    <script type="module" src="./js/signup.js"></script>
+    <script type="module" src="./js/script.js"></script>
 </body>
 </html>
-
