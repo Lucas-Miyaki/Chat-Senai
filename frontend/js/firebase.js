@@ -44,7 +44,7 @@ async function cadastrarInfo(nome, id, mensagem) {
 }
 
 async function cadastrarEmail(nome, email) {
-    const emailRef = ref(db, "Infos");
+    const emailRef = ref(db, "pessoas");
     await push(emailRef, { nome, email});
 }
 
