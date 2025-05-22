@@ -1,4 +1,4 @@
-import { login, cadastrarUsuario, cadastrarInfo } from "./firebase.js";
+import { login, cadastrarUsuario, cadastrarInfo, cadastrarEmail } from "./firebase.js";
 
 const loginButton = document.querySelector(".login__button");
 const loginError = document.querySelector(".login-error");
@@ -7,8 +7,11 @@ loginButton.addEventListener('click', async (event) => {
     event.preventDefault()
     const email = document.querySelector(".login__email").value;
     const password = document.querySelector(".login__password").value;
+    const name = document.querySelector(".login__name").value;
+
 
     const result = await login(email, password);
+    await cadastrarEmail(name, email)
 
     if (result.success) {
             user.id = crypto.randomUUID();
@@ -299,7 +302,6 @@ const sendMessage = (event) => {
 };
 
 chatForm.addEventListener('submit', async () => {
-    const email = document.querySelector(".login__email").value;
-    await cadastrarInfo(user.name, email.value, user.id, chatInput.value);
+    await cadastrarInfo(user.name, user.id, chatInput.value);
 });
 chatForm.addEventListener("submit", sendMessage)

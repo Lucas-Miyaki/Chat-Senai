@@ -38,9 +38,14 @@ async function cadastrarUsuario(email, password) {
     }
 }
 
-async function cadastrarInfo(nome, email, id, mensagem) {
+async function cadastrarInfo(nome, id, mensagem) {
     const messagesRef = ref(db, "Infos");
-    await push(messagesRef, { nome, email, id , mensagem});
+    await push(messagesRef, { nome, id , mensagem});
 }
 
-export {login, cadastrarUsuario, cadastrarInfo}
+async function cadastrarEmail(nome, email) {
+    const emailRef = ref(db, "Infos");
+    await push(emailRef, { nome, email});
+}
+
+export {login, cadastrarUsuario, cadastrarInfo, cadastrarEmail}
