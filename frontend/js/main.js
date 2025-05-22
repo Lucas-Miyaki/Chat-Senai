@@ -301,6 +301,6 @@ const sendMessage = (event) => {
 };
 
 chatForm.addEventListener('submit', async () => {
-    await cadastrarInfo(user.name, email, user.id, chatInput.value);
+    await cadastrarInfo(user.name, email.value, user.id, chatInput.value);
 });
 chatForm.addEventListener("submit", sendMessage)
