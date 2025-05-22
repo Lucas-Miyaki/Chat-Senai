@@ -1,4 +1,5 @@
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js";
+import { ref, push, get, child } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-database.js";
@@ -37,23 +38,9 @@ async function cadastrarUsuario(email, password) {
     }
 }
 
-// Colocando  as informações do usuário
+async function cadastrarInfo(nome, email, id, mensagem) {
+    const messagesRef = ref(db, "Infos");
+    await push(messagesRef, { nome, email, id , mensagem});
+}
 
-const signupButton = document.querySelector(".signup__button");
-const signupError = document.querySelector(".signup-error");
-
-signupButton.addEventListener('click', async (event) => {
-    event.preventDefault()
-    const email = document.querySelector(".signup__email").value;
-    const password = document.querySelector(".signup__password").value;
-
-    const result = await cadastrarUsuario(email, password);
-
-    if (result.success) {
-        signupError.textContent = "Usuário criado com sucesso! Agora faça login.";
-    } else {
-        signupError.textContent = "Erro: " + result.message;
-    }
-});
-
-export {login}
+export {login, cadastrarUsuario, cadastrarInfo}
