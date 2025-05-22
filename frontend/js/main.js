@@ -3,8 +3,6 @@ import { login, cadastrarUsuario, cadastrarInfo } from "./firebase.js";
 const loginButton = document.querySelector(".login__button");
 const loginError = document.querySelector(".login-error");
 
-const email = document.querySelector(".login__email").value;
-
 loginButton.addEventListener('click', async (event) => {
     event.preventDefault()
     const email = document.querySelector(".login__email").value;
@@ -301,6 +299,7 @@ const sendMessage = (event) => {
 };
 
 chatForm.addEventListener('submit', async () => {
+    const email = document.querySelector(".login__email").value;
     await cadastrarInfo(user.name, email.value, user.id, chatInput.value);
 });
 chatForm.addEventListener("submit", sendMessage)
