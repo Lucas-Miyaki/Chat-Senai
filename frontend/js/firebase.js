@@ -1,8 +1,6 @@
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js";
-import { ref, push, get, child } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-database.js";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, getAuth } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js";
+import { ref, push, get, child, getDatabase } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-auth.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/11.8.0/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCgvzldJ5iUqI6isDqoI4B62csFn3XMDAA",
